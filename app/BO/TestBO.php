@@ -4,32 +4,87 @@ namespace App\BO;
 
 use App\Models\Test;
 use App\Repositories\TestRepository;
+use Illuminate\Database\Eloquent\Collection;
 
 class TestBO
 {
 
-    public function initialize(): ?array
+    /**
+     * Retorna todos os dados do banco de dados.
+     *
+     * @return Collection
+     *
+     * @author Matheus Eduardo França <matheusefranca1727@gmail.com>
+    */
+    public function initialize(): ?Collection
     {
-        return null;
+        $result = TestRepository::initialize();
+
+        return $result;
     }
 
-    public function findById(): ?object
+    /**
+     * Busca por um dado em especifico atraves do id.
+     *
+     * @param string $id
+     *
+     * @return object
+     *
+     * @author Matheus Eduardo França <matheusefranca1727@gmail.com>
+    */
+    public function findById(string $id): ?object
     {
-        return (object) [];
+        $result = TestRepository::findById($id);
+
+        return $result;
     }
 
-    public function store(): ?object
+    /**
+     * Persiste o dado no banco de dados.
+     *
+     * @param TestRequest $request
+     *
+     * @return object
+     *
+     * @author Matheus Eduardo França <matheusefranca1727@gmail.com>
+    */
+    public function store($request): ?object
     {
-        return (object) [];
+        $result = TestRepository::store($request);
+
+        return $result;
     }
 
-    public function update(): bool
+    /**
+     * Atualiza um dado especifico e retorna bool como resultado.
+     *
+     * @param TestRequest $request
+     * @param Test $model
+     *
+     * @return bool
+     *
+     * @author Matheus Eduardo França <matheusefranca1727@gmail.com>
+    */
+    public function update($request, $model): bool
     {
-        return true;
+        $result = TestRepository::update($request, $model);
+
+        return $result;
     }
 
+    /**
+     * Deleta o dado especifico no banco de dados.
+     *
+     * @param Test $model
+     *
+     * @return bool
+     *
+     * @author Matheus Eduardo França <matheusefranca1727@gmail.com>
+    */
     public function destroy($model): bool
     {
-        return TestRepository::destroy($model);
+        $result = TestRepository::destroy($model);
+
+        return $result;
     }
 }

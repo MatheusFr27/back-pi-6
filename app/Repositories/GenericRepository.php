@@ -43,13 +43,13 @@ abstract class GenericRepository
     /**
      * Busca por determinado dado através do id.
      *
-     * @param ind $id
+     * @param string $id
      *
      * @return Model
      *
      * @author Matheus Eduardo França <matheusefranca1727@gmail.com>
      */
-    public static function findById(int $id): ?Model
+    public static function findById(string $id): ?Model
     {
         return self::getCalledClass()::where(self::getPrimaryKeyName(), $id)->first();
     }

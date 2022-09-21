@@ -10,7 +10,7 @@ use App\Models\Test;
 class TestController extends Controller
 {
 
-    private $return;
+    private $data;
     private $status;
     private $message;
 
@@ -22,38 +22,38 @@ class TestController extends Controller
     public function initialize()
     {
         $testBO = new TestBO();
-        $this->return = $testBO->initialize();
+        $this->data = $testBO->initialize();
         $this->status = 200;
         $this->message = 'Dado retornado com sucesso.';
 
-        if (!$this->return) {
+        if (!$this->data) {
             $this->status = 500;
             $this->message = 'Houve um erro ao buscar pelos os dados.';
         }
 
-        return Helpers::response($this->return, $this->status, $this->message);
+        return Helpers::response($this->data, $this->status, $this->message);
     }
 
     /**
      * Retorna o primeiro dado através do identificador único.
      *
-     * @param  int $id
+     * @param  string $id
      *
      * @return \Illuminate\Http\Response
      */
-    public function findById(int $id)
+    public function findById(string $id)
     {
         $testBO = new TestBO();
-        $this->return = $testBO->findById($id);
+        $this->data = $testBO->findById($id);
         $this->status = 200;
         $this->message = 'Dado retornado com sucesso.';
 
-        if (!$this->return) {
+        if (!$this->data) {
             $this->status = 500;
             $this->message = 'Houve um erro ao buscar pelos os dados.';
         }
 
-        return Helpers::response($this->return, $this->status, $this->message);
+        return Helpers::response($this->data, $this->status, $this->message);
     }
 
     /**
@@ -66,16 +66,16 @@ class TestController extends Controller
     public function store(TestRequest $request)
     {
         $testBO = new TestBO();
-        $this->return = $testBO->store($request);
+        $this->data = $testBO->store($request);
         $this->status = 201;
         $this->message = 'Dado criado com sucesso.';
 
-        if (!$this->return) {
+        if (!$this->data) {
             $this->status = 500;
             $this->message = 'Houve um erro ao criar o dado.';
         }
 
-        return Helpers::response($this->return, $this->status, $this->message);
+        return Helpers::response($this->data, $this->status, $this->message);
     }
 
     /**
@@ -89,16 +89,16 @@ class TestController extends Controller
     public function update(TestRequest $request, Test $model)
     {
         $testBO = new TestBO();
-        $this->return = $testBO->update($request, $model);
+        $this->data = $testBO->update($request, $model);
         $this->status = 200;
         $this->message = 'Dado atualizado com sucesso.';
 
-        if (!$this->return) {
+        if (!$this->data) {
             $this->status = 500;
             $this->message = 'Houve um erro ao atualizar os dados.';
         }
 
-        return Helpers::response($this->return, $this->status, $this->message);
+        return Helpers::response($this->data, $this->status, $this->message);
     }
 
     /**
@@ -110,15 +110,15 @@ class TestController extends Controller
     public function destroy(Test $model)
     {
         $testBO = new TestBO();
-        $this->return = $testBO->destroy($model);
+        $this->data = $testBO->destroy($model);
         $this->status = 200;
         $this->message = 'Dado deletado com sucesso.';
 
-        if (!$this->return) {
+        if (!$this->data) {
             $this->status = 500;
             $this->message = 'Houve um erro ao deletar o dado.';
         }
 
-        return Helpers::response($this->return, $this->status, $this->message);
+        return Helpers::response($this->data, $this->status, $this->message);
     }
 }
