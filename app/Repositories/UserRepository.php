@@ -16,4 +16,9 @@ class UserRepository extends GenericRepository
     {
         return User::getPrimaryKeyName();
     }
+
+    public static function getUserByWhere(array $where)
+    {
+        return User::where($where)->first();
+    }
 }

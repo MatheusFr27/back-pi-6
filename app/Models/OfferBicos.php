@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Uuid;
 use Illuminate\Database\Eloquent\Model;
 
 class OfferBicos extends Model
 {
+    use Uuid;
+
     protected $table = 'offer_bicos';
     protected $keyType = 'string';
     // protected $incrementing = false;

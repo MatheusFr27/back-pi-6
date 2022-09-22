@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
+use App\Models\Traits\HashPassword;
+use App\Models\Traits\Uuid;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use HasApiTokens, Notifiable, HashPassword, Uuid;
 
     protected $table = 'users';
     protected $keyType = 'string';
