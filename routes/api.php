@@ -14,11 +14,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', 'UserController@AuthRouteAPI');
+Route::group(['prefix' => 'auth'], function () {
+    Route::get('/user', 'UserController@initialize');
+});
 
-Route::group(['middleware' => ['throttle:60,1']], function () {
-    Route::group(['prefix' => 'test'], function () {
-        Route::get('initialize', 'TestController@initialize');
+Route::group(['middleware' => ['throttle:60,1', 'auth:api']], function () {
+    Route::group(['prefix' => 'bicos-category'], function () {
+        Route::get('initialize', 'BicosCategoryController@initialize');
     });
-    Route::resource('test', 'TestController');
+    Route::resource('bicos-category', 'BicosCategoryController');
+
+    Route::group(['prefix' => 'bico'], function () {
+        Route::get('initialize', 'BicoController@initialize');
+    });
+    Route::resource('bico', 'BicoController');
+
+    Route::group(['prefix' => 'offer-bicos'], function () {
+        Route::get('initialize', 'OfferBicosController@initialize');
+    });
+    Route::resource('offer-bicos', 'OfferBicosController');
 });

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\BO\UserBO;
+use App\BO\UserHasBicosCategoryBO;
 use App\Helpers\Helpers;
-use App\Http\Requests\UserRequest;
-use App\Models\User;
+use App\Http\Requests\UserHasBicosCategoryRequest;
+use App\Models\UserHasBicosCategory;
 
-class UserController extends Controller
+class UserHasBicosCategoryController extends Controller
 {
 
     private $data;
@@ -21,8 +21,8 @@ class UserController extends Controller
      */
     public function initialize()
     {
-        $userBO = new UserBO();
-        $this->data = $userBO->initialize();
+        $userHasBicosCategoryBO = new UserHasBicosCategoryBO();
+        $this->data = $userHasBicosCategoryBO->initialize();
         $this->status = 200;
         $this->message = 'Dado retornado com sucesso.';
 
@@ -43,8 +43,8 @@ class UserController extends Controller
      */
     public function findById(string $id)
     {
-        $userBO = new UserBO();
-        $this->data = $userBO->findById($id);
+        $userHasBicosCategoryBO = new UserHasBicosCategoryBO();
+        $this->data = $userHasBicosCategoryBO->findById($id);
         $this->status = 200;
         $this->message = 'Dado retornado com sucesso.';
 
@@ -59,14 +59,14 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param    UserRequest  $request
+     * @param    UserHasBicosCategoryRequest  $request
      *
      * @return  \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(UserHasBicosCategoryRequest $request)
     {
-        $userBO = new UserBO();
-        $this->data = $userBO->store($request);
+        $userHasBicosCategoryBO = new UserHasBicosCategoryBO();
+        $this->data = $userHasBicosCategoryBO->store($request);
         $this->status = 201;
         $this->message = 'Dado criado com sucesso.';
 
@@ -81,15 +81,15 @@ class UserController extends Controller
     /**
      * Atualiza o dado e retorna true ou false.
      *
-     * @param    UserRequest  $request
-     * @param    User  $model
+     * @param    UserHasBicosCategoryRequest  $request
+     * @param    UserHasBicosCategory  $model
      *
      * @return  \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, User $model)
+    public function update(UserHasBicosCategoryRequest $request, UserHasBicosCategory $model)
     {
-        $userBO = new UserBO();
-        $this->data = $userBO->update($request, $model);
+        $userHasBicosCategoryBO = new UserHasBicosCategoryBO();
+        $this->data = $userHasBicosCategoryBO->update($request, $model);
         $this->status = 200;
         $this->message = 'Dado atualizado com sucesso.';
 
@@ -104,13 +104,13 @@ class UserController extends Controller
     /**
      * Remove o dado e retorna true ou false.
      *
-     * @param    User  $model
+     * @param    UserHasBicosCategory  $model
      * @return  \Illuminate\Http\Response
      */
-    public function destroy(User $model)
+    public function destroy(UserHasBicosCategory $model)
     {
-        $userBO = new UserBO();
-        $this->data = $userBO->destroy($model);
+        $userHasBicosCategoryBO = new UserHasBicosCategoryBO();
+        $this->data = $userHasBicosCategoryBO->destroy($model);
         $this->status = 200;
         $this->message = 'Dado deletado com sucesso.';
 

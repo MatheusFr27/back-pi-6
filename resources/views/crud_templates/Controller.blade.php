@@ -1,13 +1,11 @@
-<?php
-
 namespace App\Http\Controllers;
 
-use App\BO\UserBO;
+use App\BO\{{ $crudName }}BO;
 use App\Helpers\Helpers;
-use App\Http\Requests\UserRequest;
-use App\Models\User;
+use App\Http\Requests\{{ $crudName }}Request;
+use App\Models\{{ $crudName }};
 
-class UserController extends Controller
+class {{ $crudName }}Controller extends Controller
 {
 
     private $data;
@@ -17,12 +15,12 @@ class UserController extends Controller
     /**
      * Retorna todos os dados.
      *
-     * @return  \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response
      */
     public function initialize()
     {
-        $userBO = new UserBO();
-        $this->data = $userBO->initialize();
+        ${{ $crudNameCamelCase }}BO = new {{ $crudName }}BO();
+        $this->data = ${{ $crudNameCamelCase }}BO->initialize();
         $this->status = 200;
         $this->message = 'Dado retornado com sucesso.';
 
@@ -37,14 +35,14 @@ class UserController extends Controller
     /**
      * Retorna o primeiro dado através do identificador único.
      *
-     * @param    string $id
+     * @param  string $id
      *
-     * @return  \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response
      */
     public function findById(string $id)
     {
-        $userBO = new UserBO();
-        $this->data = $userBO->findById($id);
+        ${{ $crudNameCamelCase }}BO = new {{ $crudName }}BO();
+        $this->data = ${{ $crudNameCamelCase }}BO->findById($id);
         $this->status = 200;
         $this->message = 'Dado retornado com sucesso.';
 
@@ -59,14 +57,14 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param    UserRequest  $request
+     * @param  {{ $crudName }}Request  $request
      *
-     * @return  \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store({{ $crudName }}Request $request)
     {
-        $userBO = new UserBO();
-        $this->data = $userBO->store($request);
+        ${{ $crudNameCamelCase }}BO = new {{ $crudName }}BO();
+        $this->data = ${{ $crudNameCamelCase }}BO->store($request);
         $this->status = 201;
         $this->message = 'Dado criado com sucesso.';
 
@@ -81,15 +79,15 @@ class UserController extends Controller
     /**
      * Atualiza o dado e retorna true ou false.
      *
-     * @param    UserRequest  $request
-     * @param    User  $model
+     * @param  {{ $crudName }}Request  $request
+     * @param  {{ $crudName }}  $model
      *
-     * @return  \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, User $model)
+    public function update({{ $crudName }}Request $request, {{ $crudName }} $model)
     {
-        $userBO = new UserBO();
-        $this->data = $userBO->update($request, $model);
+        ${{ $crudNameCamelCase }}BO = new {{ $crudName }}BO();
+        $this->data = ${{ $crudNameCamelCase }}BO->update($request, $model);
         $this->status = 200;
         $this->message = 'Dado atualizado com sucesso.';
 
@@ -104,13 +102,13 @@ class UserController extends Controller
     /**
      * Remove o dado e retorna true ou false.
      *
-     * @param    User  $model
-     * @return  \Illuminate\Http\Response
+     * @param  {{ $crudName }}  $model
+     * @return \Illuminate\Http\Response
      */
-    public function destroy(User $model)
+    public function destroy({{ $crudName }} $model)
     {
-        $userBO = new UserBO();
-        $this->data = $userBO->destroy($model);
+        ${{ $crudNameCamelCase }}BO = new {{ $crudName }}BO();
+        $this->data = ${{ $crudNameCamelCase }}BO->destroy($model);
         $this->status = 200;
         $this->message = 'Dado deletado com sucesso.';
 
