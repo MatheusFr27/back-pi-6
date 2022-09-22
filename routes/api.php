@@ -15,10 +15,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['prefix' => 'auth'], function () {
-    Route::get('/user', 'UserController@initialize');
+    Route::post('login', 'UserController@login');
+    Route::post('register', 'UserController@register');
 });
 
-Route::group(['middleware' => ['throttle:60,1', 'auth:api']], function () {
+Route::group(['middleware' => ['auth:api', 'throttle:60,1']], function () {
     Route::group(['prefix' => 'bicos-category'], function () {
         Route::get('initialize', 'BicosCategoryController@initialize');
     });
