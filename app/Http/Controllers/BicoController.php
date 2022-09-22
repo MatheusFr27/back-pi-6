@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\BO\UserBO;
+use App\BO\BicoBO;
 use App\Helpers\Helpers;
-use App\Http\Requests\UserRequest;
-use App\Models\User;
+use App\Http\Requests\BicoRequest;
+use App\Models\Bico;
 
-class UserController extends Controller
+class BicoController extends Controller
 {
 
     private $data;
@@ -21,8 +21,8 @@ class UserController extends Controller
      */
     public function initialize()
     {
-        $userBO = new UserBO();
-        $this->data = $userBO->initialize();
+        $bicoBO = new BicoBO();
+        $this->data = $bicoBO->initialize();
         $this->status = 200;
         $this->message = 'Dado retornado com sucesso.';
 
@@ -43,8 +43,8 @@ class UserController extends Controller
      */
     public function findById(string $id)
     {
-        $userBO = new UserBO();
-        $this->data = $userBO->findById($id);
+        $bicoBO = new BicoBO();
+        $this->data = $bicoBO->findById($id);
         $this->status = 200;
         $this->message = 'Dado retornado com sucesso.';
 
@@ -59,14 +59,14 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param    UserRequest  $request
+     * @param    BicoRequest  $request
      *
      * @return  \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(BicoRequest $request)
     {
-        $userBO = new UserBO();
-        $this->data = $userBO->store($request);
+        $bicoBO = new BicoBO();
+        $this->data = $bicoBO->store($request);
         $this->status = 201;
         $this->message = 'Dado criado com sucesso.';
 
@@ -81,15 +81,15 @@ class UserController extends Controller
     /**
      * Atualiza o dado e retorna true ou false.
      *
-     * @param    UserRequest  $request
-     * @param    User  $model
+     * @param    BicoRequest  $request
+     * @param    Bico  $model
      *
      * @return  \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, User $model)
+    public function update(BicoRequest $request, Bico $model)
     {
-        $userBO = new UserBO();
-        $this->data = $userBO->update($request, $model);
+        $bicoBO = new BicoBO();
+        $this->data = $bicoBO->update($request, $model);
         $this->status = 200;
         $this->message = 'Dado atualizado com sucesso.';
 
@@ -104,13 +104,13 @@ class UserController extends Controller
     /**
      * Remove o dado e retorna true ou false.
      *
-     * @param    User  $model
+     * @param    Bico  $model
      * @return  \Illuminate\Http\Response
      */
-    public function destroy(User $model)
+    public function destroy(Bico $model)
     {
-        $userBO = new UserBO();
-        $this->data = $userBO->destroy($model);
+        $bicoBO = new BicoBO();
+        $this->data = $bicoBO->destroy($model);
         $this->status = 200;
         $this->message = 'Dado deletado com sucesso.';
 

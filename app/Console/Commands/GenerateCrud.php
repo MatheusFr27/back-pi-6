@@ -7,6 +7,7 @@ use Illuminate\Console\Command;
 class GenerateCrud extends Command
 {
     private $crudName;
+    private $crudNameCamelCase;
     private $tableName;
     private $continue;
 
@@ -56,6 +57,8 @@ class GenerateCrud extends Command
     private function formatNames()
     {
         $this->crudName = ucfirst($this->argument('name'));
+
+        $this->crudNameCamelCase = lcfirst($this->argument('name'));
 
         $this->tableName = ltrim(strtolower(preg_replace('/[A-Z]/', '_$0', $this->argument('name'))), '_');
 
@@ -129,7 +132,7 @@ class GenerateCrud extends Command
 
     private function createController()
     {
-        $viewTemplate = view('crud_templates.Controller', ['crudName' => $this->crudName]);
+        $viewTemplate = view('crud_templates.Controller', ['crudName' => $this->crudName, 'crudNameCamelCase' => $this->crudNameCamelCase]);
 
         $path = "app/Http/Controllers/" . $this->crudName . 'Controller.php';
         $data = '<?php' . PHP_EOL . PHP_EOL . $viewTemplate;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -10,14 +10,14 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    protected $table = 'test';
+    protected $table = 'users';
     protected $keyType = 'string';
     // protected $incrementing = false;
     // protected $primaryKey = '';
     // protected $timestamps = false;
 
     protected $fillable = [
-        'id', 'name', 'email', 'password',
+        'id', 'name', 'email', 'password', 'phone', 'type', 'status'
     ];
 
     /**

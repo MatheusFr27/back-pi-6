@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\BO\UserBO;
+use App\BO\BicosCategoryBO;
 use App\Helpers\Helpers;
-use App\Http\Requests\UserRequest;
-use App\Models\User;
+use App\Http\Requests\BicosCategoryRequest;
+use App\Models\BicosCategory;
 
-class UserController extends Controller
+class BicosCategoryController extends Controller
 {
 
     private $data;
@@ -21,8 +21,8 @@ class UserController extends Controller
      */
     public function initialize()
     {
-        $userBO = new UserBO();
-        $this->data = $userBO->initialize();
+        $bicosCategoryBO = new BicosCategoryBO();
+        $this->data = $bicosCategoryBO->initialize();
         $this->status = 200;
         $this->message = 'Dado retornado com sucesso.';
 
@@ -43,8 +43,8 @@ class UserController extends Controller
      */
     public function findById(string $id)
     {
-        $userBO = new UserBO();
-        $this->data = $userBO->findById($id);
+        $bicosCategoryBO = new BicosCategoryBO();
+        $this->data = $bicosCategoryBO->findById($id);
         $this->status = 200;
         $this->message = 'Dado retornado com sucesso.';
 
@@ -59,14 +59,14 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param    UserRequest  $request
+     * @param    BicosCategoryRequest  $request
      *
      * @return  \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(BicosCategoryRequest $request)
     {
-        $userBO = new UserBO();
-        $this->data = $userBO->store($request);
+        $bicosCategoryBO = new BicosCategoryBO();
+        $this->data = $bicosCategoryBO->store($request);
         $this->status = 201;
         $this->message = 'Dado criado com sucesso.';
 
@@ -81,15 +81,15 @@ class UserController extends Controller
     /**
      * Atualiza o dado e retorna true ou false.
      *
-     * @param    UserRequest  $request
-     * @param    User  $model
+     * @param    BicosCategoryRequest  $request
+     * @param    BicosCategory  $model
      *
      * @return  \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, User $model)
+    public function update(BicosCategoryRequest $request, BicosCategory $model)
     {
-        $userBO = new UserBO();
-        $this->data = $userBO->update($request, $model);
+        $bicosCategoryBO = new BicosCategoryBO();
+        $this->data = $bicosCategoryBO->update($request, $model);
         $this->status = 200;
         $this->message = 'Dado atualizado com sucesso.';
 
@@ -104,13 +104,13 @@ class UserController extends Controller
     /**
      * Remove o dado e retorna true ou false.
      *
-     * @param    User  $model
+     * @param    BicosCategory  $model
      * @return  \Illuminate\Http\Response
      */
-    public function destroy(User $model)
+    public function destroy(BicosCategory $model)
     {
-        $userBO = new UserBO();
-        $this->data = $userBO->destroy($model);
+        $bicosCategoryBO = new BicosCategoryBO();
+        $this->data = $bicosCategoryBO->destroy($model);
         $this->status = 200;
         $this->message = 'Dado deletado com sucesso.';
 

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\BO\UserBO;
+use App\BO\OfferBicosBO;
 use App\Helpers\Helpers;
-use App\Http\Requests\UserRequest;
-use App\Models\User;
+use App\Http\Requests\OfferBicosRequest;
+use App\Models\OfferBicos;
 
-class UserController extends Controller
+class OfferBicosController extends Controller
 {
 
     private $data;
@@ -21,8 +21,8 @@ class UserController extends Controller
      */
     public function initialize()
     {
-        $userBO = new UserBO();
-        $this->data = $userBO->initialize();
+        $offerBicosBO = new OfferBicosBO();
+        $this->data = $offerBicosBO->initialize();
         $this->status = 200;
         $this->message = 'Dado retornado com sucesso.';
 
@@ -43,8 +43,8 @@ class UserController extends Controller
      */
     public function findById(string $id)
     {
-        $userBO = new UserBO();
-        $this->data = $userBO->findById($id);
+        $offerBicosBO = new OfferBicosBO();
+        $this->data = $offerBicosBO->findById($id);
         $this->status = 200;
         $this->message = 'Dado retornado com sucesso.';
 
@@ -59,14 +59,14 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param    UserRequest  $request
+     * @param    OfferBicosRequest  $request
      *
      * @return  \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(OfferBicosRequest $request)
     {
-        $userBO = new UserBO();
-        $this->data = $userBO->store($request);
+        $offerBicosBO = new OfferBicosBO();
+        $this->data = $offerBicosBO->store($request);
         $this->status = 201;
         $this->message = 'Dado criado com sucesso.';
 
@@ -81,15 +81,15 @@ class UserController extends Controller
     /**
      * Atualiza o dado e retorna true ou false.
      *
-     * @param    UserRequest  $request
-     * @param    User  $model
+     * @param    OfferBicosRequest  $request
+     * @param    OfferBicos  $model
      *
      * @return  \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, User $model)
+    public function update(OfferBicosRequest $request, OfferBicos $model)
     {
-        $userBO = new UserBO();
-        $this->data = $userBO->update($request, $model);
+        $offerBicosBO = new OfferBicosBO();
+        $this->data = $offerBicosBO->update($request, $model);
         $this->status = 200;
         $this->message = 'Dado atualizado com sucesso.';
 
@@ -104,13 +104,13 @@ class UserController extends Controller
     /**
      * Remove o dado e retorna true ou false.
      *
-     * @param    User  $model
+     * @param    OfferBicos  $model
      * @return  \Illuminate\Http\Response
      */
-    public function destroy(User $model)
+    public function destroy(OfferBicos $model)
     {
-        $userBO = new UserBO();
-        $this->data = $userBO->destroy($model);
+        $offerBicosBO = new OfferBicosBO();
+        $this->data = $offerBicosBO->destroy($model);
         $this->status = 200;
         $this->message = 'Dado deletado com sucesso.';
 
