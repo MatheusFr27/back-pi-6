@@ -4,11 +4,11 @@ use App\Models\{{ $crudName }};
 
 class {{ $crudName }}Repository extends GenericRepository {
 
-    protected function getClass() {
+    protected static function getClass() {
         return {{ $crudName }}::class;
     }
 
-    protected function getKeyName() {
+    protected static function getKeyName() {
         return {{ $crudName }}::getPrimaryKeyName();
     }
 

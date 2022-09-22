@@ -19,8 +19,8 @@ class {{ $crudName }}Controller extends Controller
      */
     public function initialize()
     {
-        ${{ $crudName }}BO = new {{ $crudName }}BO();
-        $this->data = ${{ $crudName }}BO->initialize();
+        ${{ $crudNameCamelCase }}BO = new {{ $crudName }}BO();
+        $this->data = ${{ $crudNameCamelCase }}BO->initialize();
         $this->status = 200;
         $this->message = 'Dado retornado com sucesso.';
 
@@ -41,8 +41,8 @@ class {{ $crudName }}Controller extends Controller
      */
     public function findById(string $id)
     {
-        ${{ $crudName }}BO = new {{ $crudName }}BO();
-        $this->data = ${{ $crudName }}BO->findById($id);
+        ${{ $crudNameCamelCase }}BO = new {{ $crudName }}BO();
+        $this->data = ${{ $crudNameCamelCase }}BO->findById($id);
         $this->status = 200;
         $this->message = 'Dado retornado com sucesso.';
 
@@ -63,8 +63,8 @@ class {{ $crudName }}Controller extends Controller
      */
     public function store({{ $crudName }}Request $request)
     {
-        ${{ $crudName }}BO = new {{ $crudName }}BO();
-        $this->data = ${{ $crudName }}BO->store($request);
+        ${{ $crudNameCamelCase }}BO = new {{ $crudName }}BO();
+        $this->data = ${{ $crudNameCamelCase }}BO->store($request);
         $this->status = 201;
         $this->message = 'Dado criado com sucesso.';
 
@@ -86,8 +86,8 @@ class {{ $crudName }}Controller extends Controller
      */
     public function update({{ $crudName }}Request $request, {{ $crudName }} $model)
     {
-        ${{ $crudName }}BO = new {{ $crudName }}BO();
-        $this->data = ${{ $crudName }}BO->update($request, $model);
+        ${{ $crudNameCamelCase }}BO = new {{ $crudName }}BO();
+        $this->data = ${{ $crudNameCamelCase }}BO->update($request, $model);
         $this->status = 200;
         $this->message = 'Dado atualizado com sucesso.';
 
@@ -107,8 +107,8 @@ class {{ $crudName }}Controller extends Controller
      */
     public function destroy({{ $crudName }} $model)
     {
-        ${{ $crudName }}BO = new {{ $crudName }}BO();
-        $this->data = ${{ $crudName }}BO->destroy($model);
+        ${{ $crudNameCamelCase }}BO = new {{ $crudName }}BO();
+        $this->data = ${{ $crudNameCamelCase }}BO->destroy($model);
         $this->status = 200;
         $this->message = 'Dado deletado com sucesso.';
 
