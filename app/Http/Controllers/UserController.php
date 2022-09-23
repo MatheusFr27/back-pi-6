@@ -124,6 +124,15 @@ class UserController extends Controller
         return Helpers::response($this->data, $this->status, $this->message);
     }
 
+    /**
+     * Usuário loga no sistema e obtem um token de autenticação.
+     *
+     * @param UserRequest $request
+     *
+     * @return \Illuminate\Http\Response
+     *
+     * @author Matheus Eduardo França <matheusefranca1727@gmail.com>
+     */
     public function login(UserRequest $request)
     {
         $userBO = new UserBO();
@@ -139,6 +148,15 @@ class UserController extends Controller
         return Helpers::response($this->data, $this->status, $this->message);
     }
 
+    /**
+     * Usuário registra-se no sistema.
+     *
+     * @param UserRequest $request
+     *
+     * @return \Illuminate\Http\Response
+     *
+     * @author Matheus Eduardo França <matheusefranca1727@gmail.com>
+     */
     public function register(UserRequest $request)
     {
         $userBO = new UserBO();

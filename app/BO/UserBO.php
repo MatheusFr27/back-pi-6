@@ -93,40 +93,56 @@ class UserBO
         return $result;
     }
 
-    public function login($request)
+    /**
+     * Usuário loga no sistema e obtem um token de autenticação.
+     *
+     * @param UserRequest $request
+     *
+     * @return object
+     *
+     * @author Matheus Eduardo França <matheusefranca1727@gmail.com>
+     */
+    public function login($request): object
     {
         $credentials = $request->only(['email', 'password']);
 
         $userExists = Auth::attempt($credentials);
 
+        $result = new stdClass();
         if ($userExists) {
-            $user = UserRepository::getUserByWhere([['email', $credentials['email']]])->toArray();
-
-            dd($user);
+            $result->user = UserRepository::getUserByWhere([['email', $credentials['email']]]);
+            $result->token = $result->user->createToken('Personal Access Token')->accessToken;
+        } else {
+            $result = null;
         }
 
-        dd($credentials);
+        return $result;
     }
 
-    public function register($request)
+    /**
+     * Usuário registra-se no sistema.
+     *
+     * @param Request $request
+     *
+     * @return bool
+     *
+     * @author Matheus Eduardo França <matheusefranca1727@gmail.com>
+     */
+    public function register($request): bool
     {
         DB::beginTransaction();
 
         try {
-            $result = new \stdClass();
-            $result->user = UserRepository::store($request->all());
-
-            $token = $result->user->createToken($result->user->id);
-            $result->token = 'Bearer ' . $token->accessToken;
+            $userCreated = UserRepository::store($request->all());
 
             DB::commit();
 
-            return $result;
+            return isset($userCreated) ? true : false;
         } catch (Throwable $e) {
             DB::rollBack();
 
-            Log::info('Description', [$e->getLine(), $e->getFile(), $e->getMessage()]);
-            dd($e->getLine(), $e->getFile(), $e->getMessage());
+            Log::info('Register-User-Description', [$e->getLine(), $e->getFile(), $e->getMessage()]);
+
             return null;
         }
     }
