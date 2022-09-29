@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Uuid;
 use Illuminate\Database\Eloquent\Model;
 
 class BicosCategory extends Model
 {
+    use Uuid;
+
     protected $table = 'bicos_category';
     protected $keyType = 'string';
     // protected $incrementing = false;
