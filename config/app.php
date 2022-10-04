@@ -176,7 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\TelescopeServiceProvider::class,
         Laravel\Passport\PassportServiceProvider::class,
-
+        Laravel\Telescope\TelescopeServiceProvider::class,
     ],
 
     /*

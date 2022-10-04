@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::group(['prefix' => 'auth', 'middleware' => ['guest']], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['guest']], function () {
     Route::get('login', 'AdminController@loginView')->name('login');
     Route::post('login', 'AdminController@login')->name('loginAdmin');
 });
