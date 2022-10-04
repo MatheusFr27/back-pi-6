@@ -4,11 +4,13 @@ namespace App\Models;
 
 use App\Models\Traits\HashPassword;
 use App\Models\Traits\Uuid;
+use Illuminate\Auth\Authenticatable as AuthenticableTrait;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 
-class Admin extends Model
+class Admin extends Model implements Authenticatable
 {
-    use Uuid, HashPassword;
+    use AuthenticableTrait, Uuid, HashPassword;
 
     protected $table = 'admins';
     protected $keyType = 'string';

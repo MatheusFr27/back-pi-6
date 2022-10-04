@@ -6,6 +6,8 @@ use App\BO\AdminBO;
 use App\Helpers\Helpers;
 use App\Http\Requests\AdminRequest;
 use App\Models\Admin;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -122,7 +124,19 @@ class AdminController extends Controller
         return Helpers::response($this->data, $this->status, $this->message);
     }
 
-    public function loginView() {
-        return view('admin.login');
+    public function loginView()
+    {
+        return view('auth.login');
+    }
+
+    public function login(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::guard('admins')->attempt($credentials)) {
+            return view('admin.home');
+        }
+
+        return view('auth.login');
     }
 }
