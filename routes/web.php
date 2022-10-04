@@ -19,7 +19,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['guest']], function () {
     Route::post('login', 'AdminController@login')->name('loginAdmin');
 });
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth.admin']], function () {
+    Route::prefix('admin')->group(function () {
+        Route::get('dashboard', 'AdminController@dashboardView')->name('dashboard');
+    });
+
+    Route::get('logout', 'AdminController@logout')->name('logout');
 });
 
 // Auth::routes();

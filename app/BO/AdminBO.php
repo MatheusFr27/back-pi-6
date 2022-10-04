@@ -5,6 +5,7 @@ namespace App\BO;
 use App\Models\Admin;
 use App\Repositories\AdminRepository;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Auth;
 
 class AdminBO
 {
@@ -15,7 +16,7 @@ class AdminBO
      * @return  Collection
      *
      * @author  Matheus Eduardo França <matheusefranca1727@gmail.com>
-    */
+     */
     public function initialize(): ?Collection
     {
         $result = AdminRepository::initialize();
@@ -31,7 +32,7 @@ class AdminBO
      * @return  object
      *
      * @author  Matheus Eduardo França <matheusefranca1727@gmail.com>
-    */
+     */
     public function findById(string $id): ?object
     {
         $result = AdminRepository::findById($id);
@@ -47,7 +48,7 @@ class AdminBO
      * @return  object
      *
      * @author  Matheus Eduardo França <matheusefranca1727@gmail.com>
-    */
+     */
     public function store($request): ?object
     {
         $result = AdminRepository::store($request);
@@ -64,7 +65,7 @@ class AdminBO
      * @return  bool
      *
      * @author  Matheus Eduardo França <matheusefranca1727@gmail.com>
-    */
+     */
     public function update($request, $model): bool
     {
         $result = AdminRepository::update($request, $model);
@@ -80,10 +81,32 @@ class AdminBO
      * @return  bool
      *
      * @author  Matheus Eduardo França <matheusefranca1727@gmail.com>
-    */
+     */
     public function destroy($model): bool
     {
         $result = AdminRepository::destroy($model);
+
+        return $result;
+    }
+
+    public function login($request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::guard('admins')->attempt($credentials)) {
+            return redirect()->route('dashboard');
+        }
+
+        $messages = [
+            'messageWarning' => 'Email ou senha incorreto. Por favor, tente novamente mais tarde.',
+        ];
+
+        return view('auth.login',  $messages);
+    }
+
+    public function getTotalizers()
+    {
+        $result = AdminRepository::getTotalizers();
 
         return $result;
     }

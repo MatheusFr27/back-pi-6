@@ -8,6 +8,12 @@
                     <div class="card-header">Painel administrativo - <strong>IBicos</strong></div>
 
                     <div class="card-body">
+                        @isset($messageWarning)
+                            <p class="bg-danger text-white mb-3 p-1 rounded">
+                                <strong>{{ $messageWarning }}</strong>
+                            </p>
+                        @endisset
+
                         <form method="POST" action="{{ route('loginAdmin') }}">
                             @csrf
 
@@ -16,14 +22,8 @@
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
-                                        class="form-control @error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                        class="form-control @isset($messageWarning) is-invalid @endisset"
+                                        name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                                 </div>
                             </div>
 
@@ -32,14 +32,8 @@
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
-                                        class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="current-password">
-
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                        class="form-control @isset($messageWarning) is-invalid @endisset"
+                                        name="password" required autocomplete="current-password">
                                 </div>
                             </div>
 

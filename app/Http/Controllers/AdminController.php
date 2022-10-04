@@ -124,19 +124,36 @@ class AdminController extends Controller
         return Helpers::response($this->data, $this->status, $this->message);
     }
 
+    /**
+     * Faz o login do admin no sistema.
+     *
+     * @param Request $request
+     *
+     * @author Matheus Eduardo França <matheusefranca1727@gmail.com>
+     */
+    public function login(Request $request)
+    {
+        $adminBO = new AdminBO();
+        $this->data = $adminBO->login($request);
+
+        return $this->data;
+    }
+
+    public function logout() {
+        Auth::guard('admins')->logout();
+
+        return redirect()->route('login');
+    }
+
     public function loginView()
     {
         return view('auth.login');
     }
 
-    public function login(Request $request)
+    public function dashboardView()
     {
-        $credentials = $request->only('email', 'password');
-
-        if (Auth::guard('admins')->attempt($credentials)) {
-            return view('admin.home');
-        }
-
-        return view('auth.login');
+        $adminBO = new AdminBO();
+        $this->data = $adminBO->getTotalizers()[0];
+        return view('admin.home', ['totalizers' => $this->data]);
     }
 }
