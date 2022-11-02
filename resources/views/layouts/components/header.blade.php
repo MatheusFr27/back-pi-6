@@ -17,7 +17,7 @@
         <div class="btn-group">
             <button type="button" class="btn btn-primary" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
-                <img src="{{ url('storage', 'image_admins/default_avatar.jpg') }}" alt="Avatar do admin"
+                <img src="{{ url('storage', 'image_admins/default_avatar.png') }}" alt="Avatar do admin"
                     class="rounded-circle border border-secondary" width="45em">
             </button>
             <div class="dropdown-menu dropdown-menu-right">

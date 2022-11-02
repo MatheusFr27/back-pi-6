@@ -92,7 +92,7 @@ class AdminBO
     public function login($request)
     {
         $credentials = $request->only('email', 'password');
-
+        
         if (Auth::guard('admins')->attempt($credentials)) {
             return redirect()->route('dashboard');
         }

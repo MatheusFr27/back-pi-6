@@ -15,9 +15,9 @@ class AdminSeeder extends Seeder
         Admin::firstOrCreate([
             'email' => 'matheusefranca1727@gmail.com'
         ], [
-            'email' => env('EMAIL_ADMIN'),
+            'email' => 'matheusefranca1727@gmail.com',
             'name' => 'Matheus Eduardo França',
-            'password' => env('PASSWORD_ADMIN'),
+            'password' => 'devomudar',
             'master_access' => 'S',
             'status' => 'A'
         ]);
