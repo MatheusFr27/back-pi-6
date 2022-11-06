@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use App\Models\Traits\Uuid;
+// use App\Models\Traits\Uuid;
 use Illuminate\Database\Eloquent\Model;
 
 class UserHasBicosCategory extends Model
 {
-    use Uuid;
+    // use Uuid;
 
     protected $table = 'user_has_bicos_category';
     protected $keyType = 'string';

@@ -35,3 +35,7 @@ Route::group(['middleware' => ['auth:api', 'throttle:60,1']], function () {
     });
     Route::resource('offer-bicos', 'OfferBicosController');
 });
+
+Route::group(['prefix' => 'ext'], function () {
+    Route::get('bicos-category/initialize', 'BicosCategoryController@initialize');
+});

@@ -13,7 +13,7 @@ class BicosCategory extends Model
     protected $keyType = 'string';
     // protected $incrementing = false;
     // protected $primaryKey = '';
-    protected $timestamps = false;
+    public $timestamps = false;
 
     protected $fillable = [
         'id', 'description'
